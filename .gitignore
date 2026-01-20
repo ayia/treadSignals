@@ -63,5 +63,11 @@ ehthumbs.db
 logs/
 *.log
 
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
 # Optional: Local Claude memory (if you want to keep it local)
 # .claude/memory/CONTEXT.md

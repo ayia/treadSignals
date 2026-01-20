@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
 # Run type-check before pushing
-pnpm run type-check
+npm run type-check
 
-# Run unit tests before pushing
-pnpm run test
+# Run unit tests before pushing (single run, no watch)
+npm run test:run

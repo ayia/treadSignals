@@ -3,7 +3,12 @@
     "allow": [
       "Bash(git branch:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nchore\\(init\\): setup Claude Code documentation system\n\nComplete documentation infrastructure for ChartDepth trading signals platform:\n\n- CLAUDE.md: Main project instructions \\(WHAT/WHY/HOW format\\)\n- .claude/: Knowledge base, agents, skills, commands\n  - knowledge/: BUSINESS, TECHNICAL, FEATURES, WORKFLOWS, GLOSSARY, GIT_WORKFLOW\n  - agents/: orchestrator, frontend, backend, git \\(with task integration\\)\n  - skills/: signal-creator, deploy\n  - commands/: signal, status, plan, deploy, git\n  - adr/: 4 Architecture Decision Records\n  - memory/: CONTEXT, DECISIONS, LEARNINGS\n  - progress/: PDD tracking \\(MASTER.md\\)\n- PROJECT_TRACKER.md: Task and phase tracking\n- HUMAN_ACTIONS.md: Human-required actions\n- .gitignore: Standard Next.js ignores\n\nGit-Task Integration:\n- Auto-commit on task completion\n- Smart push proposals \\(never auto to main\\)\n- Bidirectional commit↔tracker linking\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nchore\\(init\\): setup Claude Code documentation system\n\nComplete documentation infrastructure for ChartDepth trading signals platform:\n\n- CLAUDE.md: Main project instructions \\(WHAT/WHY/HOW format\\)\n- .claude/: Knowledge base, agents, skills, commands\n  - knowledge/: BUSINESS, TECHNICAL, FEATURES, WORKFLOWS, GLOSSARY, GIT_WORKFLOW\n  - agents/: orchestrator, frontend, backend, git \\(with task integration\\)\n  - skills/: signal-creator, deploy\n  - commands/: signal, status, plan, deploy, git\n  - adr/: 4 Architecture Decision Records\n  - memory/: CONTEXT, DECISIONS, LEARNINGS\n  - progress/: PDD tracking \\(MASTER.md\\)\n- PROJECT_TRACKER.md: Task and phase tracking\n- HUMAN_ACTIONS.md: Human-required actions\n- .gitignore: Standard Next.js ignores\n\nGit-Task Integration:\n- Auto-commit on task completion\n- Smart push proposals \\(never auto to main\\)\n- Bidirectional commit↔tracker linking\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(npx shadcn@latest init -d -y)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
