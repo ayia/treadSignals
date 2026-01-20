@@ -1,0 +1,90 @@
+# ChartDepth - LLM Navigation Index
+
+> Plateforme de signaux trading IA - Projet Solo Bootstrap
+
+## Quick Facts
+- Stack: Next.js 14 + Supabase + Stripe + Vercel
+- Budget: 15-100€ initial
+- Objectif: MRR 2,500€ en 12 mois
+- Status: Phase 1 - Préparation
+
+## Documentation Index
+
+### Project Management
+- [CLAUDE.md](CLAUDE.md): Instructions principales pour Claude Code
+- [PROJECT_TRACKER.md](PROJECT_TRACKER.md): Suivi des tâches en cours
+- [HUMAN_ACTIONS.md](HUMAN_ACTIONS.md): Actions nécessitant intervention humaine
+
+### Knowledge Base (.claude/)
+- [.claude/INDEX.md](.claude/INDEX.md): Index central du knowledge base
+- [.claude/knowledge/BUSINESS.md](.claude/knowledge/BUSINESS.md): Contexte business, objectifs, personas
+- [.claude/knowledge/TECHNICAL.md](.claude/knowledge/TECHNICAL.md): Architecture, stack, schéma DB
+- [.claude/knowledge/FEATURES.md](.claude/knowledge/FEATURES.md): Spécifications fonctionnelles MVP
+- [.claude/knowledge/WORKFLOWS.md](.claude/knowledge/WORKFLOWS.md): Processus et routines
+- [.claude/knowledge/GLOSSARY.md](.claude/knowledge/GLOSSARY.md): Termes et définitions
+
+### Architecture Decisions (.claude/adr/)
+- [.claude/adr/001-framework-nextjs.md](.claude/adr/001-framework-nextjs.md): Choix Next.js
+- [.claude/adr/002-backend-supabase.md](.claude/adr/002-backend-supabase.md): Choix Supabase
+- [.claude/adr/003-payments-stripe.md](.claude/adr/003-payments-stripe.md): Choix Stripe
+- [.claude/adr/004-ui-shadcn.md](.claude/adr/004-ui-shadcn.md): Choix shadcn/ui
+
+### Progress Tracking (.claude/progress/)
+- [.claude/progress/MASTER.md](.claude/progress/MASTER.md): Vue globale progression PDD
+
+### Original Planning Documents (Documents_prj/)
+- [Documents_prj/SOLO_00_INDEX.md](Documents_prj/SOLO_00_INDEX.md): Index documentation SOLO
+- [Documents_prj/SOLO_01_BUSINESS_PLAN.md](Documents_prj/SOLO_01_BUSINESS_PLAN.md): Business plan détaillé
+- [Documents_prj/SOLO_02_PLAN_PROJET_DETAILLE.md](Documents_prj/SOLO_02_PLAN_PROJET_DETAILLE.md): Planning semaine par semaine
+- [Documents_prj/SOLO_03_WORKFLOW_PROCESSUS.md](Documents_prj/SOLO_03_WORKFLOW_PROCESSUS.md): Routines quotidiennes
+- [Documents_prj/SOLO_04_BUDGET_BOOTSTRAP.md](Documents_prj/SOLO_04_BUDGET_BOOTSTRAP.md): Budget et projections
+- [Documents_prj/SOLO_05_ARCHITECTURE_TECHNIQUE.md](Documents_prj/SOLO_05_ARCHITECTURE_TECHNIQUE.md): Architecture détaillée
+- [Documents_prj/SOLO_06_MVP_FEATURES.md](Documents_prj/SOLO_06_MVP_FEATURES.md): Features MVP complètes
+- [Documents_prj/SOLO_07_MARKETING_GRATUIT.md](Documents_prj/SOLO_07_MARKETING_GRATUIT.md): Stratégie marketing
+- [Documents_prj/SOLO_08_CHECKLISTS_TEMPLATES.md](Documents_prj/SOLO_08_CHECKLISTS_TEMPLATES.md): Templates et checklists
+
+## Key Concepts
+
+### Business Model
+- Free tier: 1 signal/jour, délai 24h
+- Pro tier: 19€/mois, tous signaux, temps réel
+
+### 5 MVP Instruments
+1. EUR/USD (Forex)
+2. GBP/USD (Forex)
+3. XAU/USD (Gold)
+4. BTC/USD (Crypto)
+5. US30 (Index)
+
+### Technical Stack
+- Frontend: Next.js 14, TypeScript, Tailwind CSS, shadcn/ui
+- Backend: Supabase (PostgreSQL, Auth, Storage)
+- Payments: Stripe
+- Hosting: Vercel
+- Charts: TradingView Widget
+
+### Project Phases
+1. Préparation (S1-S2): Setup technique
+2. MVP Core (S3-S6): Landing, Auth, Dashboard, Signals
+3. Paiements (S7-S10): Stripe, Emails, Subscriptions
+4. Admin & Polish (S11-S14): Admin UI, Stats, Deploy
+
+## For Claude Code
+
+### Session Start Protocol
+1. Read CLAUDE.md
+2. Read .claude/progress/MASTER.md
+3. Check PROJECT_TRACKER.md for current tasks
+4. Check HUMAN_ACTIONS.md for blockers
+
+### Session End Protocol
+1. Update .claude/progress/MASTER.md
+2. Update PROJECT_TRACKER.md
+3. Add to HUMAN_ACTIONS.md if needed
+4. Summarize progress
+
+### File Conventions
+- Specs: .claude/knowledge/*.md
+- Decisions: .claude/adr/NNN-*.md
+- Progress: .claude/progress/*.md
+- Memory: .claude/memory/*.md

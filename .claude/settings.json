@@ -1,0 +1,178 @@
+{
+  "$schema": "https://claude.ai/schemas/claude-settings.json",
+  "version": "1.0",
+  "project": {
+    "name": "ChartDepth",
+    "description": "Plateforme de signaux trading IA - Solo Bootstrap",
+    "language": "fr"
+  },
+  "hooks": {
+    "pre-commit": {
+      "enabled": true,
+      "commands": [
+        "npm run lint",
+        "npm run type-check"
+      ],
+      "description": "Vérifier lint et types avant chaque commit"
+    },
+    "post-code-change": {
+      "enabled": true,
+      "commands": [
+        "npm run type-check"
+      ],
+      "description": "Vérifier les types après modification de code"
+    },
+    "pre-push": {
+      "enabled": true,
+      "commands": [
+        "npm run build",
+        "npm test"
+      ],
+      "description": "Build et tests avant push"
+    }
+  },
+  "commands": {
+    "signal": {
+      "file": "commands/signal.md",
+      "description": "Créer un nouveau signal de trading"
+    },
+    "deploy": {
+      "file": "commands/deploy.md",
+      "description": "Déployer sur Vercel"
+    },
+    "status": {
+      "file": "commands/status.md",
+      "description": "Afficher l'état du projet"
+    },
+    "plan": {
+      "file": "commands/plan.md",
+      "description": "Créer un plan pour une feature"
+    },
+    "git": {
+      "file": "commands/git.md",
+      "description": "Commandes Git (status, commit, push, pr, etc.)"
+    }
+  },
+  "agents": {
+    "orchestrator": {
+      "file": "agents/orchestrator.md",
+      "role": "lead",
+      "description": "Coordonne les autres agents"
+    },
+    "frontend": {
+      "file": "agents/frontend-agent.md",
+      "role": "specialist",
+      "description": "Développement React/Next.js"
+    },
+    "backend": {
+      "file": "agents/backend-agent.md",
+      "role": "specialist",
+      "description": "Développement Supabase/API"
+    },
+    "git": {
+      "file": "agents/git-agent.md",
+      "role": "specialist",
+      "description": "Gestion Git, GitHub, versioning"
+    }
+  },
+  "git": {
+    "remote": "https://github.com/ayia/treadSignals.git",
+    "default_branch": "main",
+    "branch_convention": {
+      "feature": "feature/*",
+      "bugfix": "bugfix/*",
+      "hotfix": "hotfix/*",
+      "docs": "docs/*"
+    },
+    "commit_convention": "conventional",
+    "pr_template": true,
+    "task_integration": {
+      "enabled": true,
+      "commit_on_task_complete": true,
+      "link_commits_to_tracker": true
+    },
+    "auto_commit": {
+      "enabled": true,
+      "conditions": [
+        "task_completed",
+        "pdd_milestone_reached",
+        "tests_pass",
+        "docs_only_change"
+      ],
+      "blocked_when": [
+        "lint_errors",
+        "type_errors",
+        "secrets_detected",
+        "wip_status"
+      ]
+    },
+    "auto_push": {
+      "enabled": false,
+      "propose_when": [
+        "commits_accumulated_3",
+        "feature_complete",
+        "session_end",
+        "milestone_reached"
+      ],
+      "never_to": ["main", "master", "production"],
+      "require_confirmation": true
+    },
+    "co_author": "Claude <noreply@anthropic.com>"
+  },
+  "skills": {
+    "signal-creator": {
+      "path": "skills/signal-creator",
+      "trigger": "/signal"
+    },
+    "deploy": {
+      "path": "skills/deploy",
+      "trigger": "/deploy"
+    }
+  },
+  "workflow": {
+    "pattern": "explore-plan-execute",
+    "explore": {
+      "read_only": true,
+      "files": [
+        "CLAUDE.md",
+        ".claude/memory/CONTEXT.md",
+        "PROJECT_TRACKER.md",
+        "HUMAN_ACTIONS.md"
+      ]
+    },
+    "plan": {
+      "output": ".claude/plans/",
+      "require_approval": true
+    },
+    "execute": {
+      "update_tracker": true,
+      "commit_after_task": true
+    }
+  },
+  "memory": {
+    "context_file": ".claude/memory/CONTEXT.md",
+    "decisions_file": ".claude/memory/DECISIONS.md",
+    "learnings_file": ".claude/memory/LEARNINGS.md",
+    "auto_update": true
+  },
+  "documentation": {
+    "knowledge_base": ".claude/knowledge/",
+    "adr_directory": ".claude/adr/",
+    "progress_tracker": ".claude/progress/MASTER.md"
+  },
+  "conventions": {
+    "commit_format": "type(scope): description",
+    "branch_naming": "feature/*, bugfix/*, docs/*",
+    "file_naming": {
+      "components": "PascalCase.tsx",
+      "utilities": "kebab-case.ts",
+      "types": "*.types.ts"
+    }
+  },
+  "quality": {
+    "typescript_strict": true,
+    "lint_on_save": true,
+    "test_coverage_minimum": 70,
+    "require_types": true
+  }
+}
