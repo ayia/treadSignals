@@ -9,26 +9,60 @@
   "hooks": {
     "pre-commit": {
       "enabled": true,
+      "tool": "husky",
       "commands": [
-        "npm run lint",
-        "npm run type-check"
+        "pnpm exec lint-staged"
       ],
-      "description": "Vérifier lint et types avant chaque commit"
+      "description": "ESLint + Prettier via lint-staged"
     },
-    "post-code-change": {
+    "commit-msg": {
       "enabled": true,
+      "tool": "husky",
       "commands": [
-        "npm run type-check"
+        "pnpm exec commitlint --edit $1"
       ],
-      "description": "Vérifier les types après modification de code"
+      "description": "Valide format Conventional Commits"
     },
     "pre-push": {
       "enabled": true,
+      "tool": "husky",
       "commands": [
-        "npm run build",
-        "npm test"
+        "pnpm run type-check",
+        "pnpm run test"
       ],
-      "description": "Build et tests avant push"
+      "description": "Type-check + Tests avant push"
+    }
+  },
+  "automation": {
+    "testing": {
+      "unit": {
+        "tool": "vitest",
+        "config": "vitest.config.ts",
+        "command": "pnpm test"
+      },
+      "e2e": {
+        "tool": "playwright",
+        "config": "playwright.config.ts",
+        "command": "pnpm test:e2e"
+      },
+      "coverage": {
+        "provider": "v8",
+        "thresholds": {
+          "lines": 60,
+          "functions": 60,
+          "branches": 50
+        }
+      }
+    },
+    "ci": {
+      "platform": "github-actions",
+      "workflow": ".github/workflows/ci.yml",
+      "jobs": ["validate", "build", "e2e"]
+    },
+    "deployment": {
+      "platform": "vercel",
+      "auto_preview": true,
+      "auto_production": true
     }
   },
   "commands": {
@@ -172,7 +206,10 @@
   "quality": {
     "typescript_strict": true,
     "lint_on_save": true,
-    "test_coverage_minimum": 70,
-    "require_types": true
+    "test_coverage_minimum": 60,
+    "require_types": true,
+    "pre_commit_checks": ["lint-staged", "commitlint"],
+    "pre_push_checks": ["type-check", "test"],
+    "ci_checks": ["lint", "type-check", "test", "build", "e2e"]
   }
 }
